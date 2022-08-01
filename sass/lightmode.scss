@@ -1,0 +1,498 @@
+$font-size: 16px;
+$font-size-large: 18px;
+$lh: 1.4rem;
+$lh-large: 1.6rem;
+$font-stack: "Josefin Sans", sans-serif;
+$font-weight-medium: 400;
+$font-weight-bold: 700;
+// ######## primary colours ########
+$check-bg: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+$bright-blue: hsl(220, 98%, 61%);
+// ######## dark theme ##########
+$Very-Dark-Blue: hsl(235, 21%, 11%);
+$Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+$Light-Grayish-Blue: hsl(234, 39%, 85%);
+$Light-Grayish-Blue-hover: hsl(236, 33%, 92%);
+$Dark-Grayish-Blue: hsl(234, 11%, 52%);
+$Very-Dark-Grayish-Blue-1: hsl(233, 14%, 35%);
+$Very-Dark-Grayish-Blue-2: hsl(237, 14%, 26%);
+// ####### light theme #########
+$Very-Light-Gray: hsl(0, 0%, 98%);
+$Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+$Light-Grayish-Blue: hsl(233, 11%, 84%);
+$Dark-Grayish-Blue: hsl(236, 9%, 61%);
+$Very-Dark-Grayish-Blue-3: hsl(235, 19%, 35%);
+
+* {
+  box-sizing: border-box;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+img {
+  display: block;
+  overflow: hidden;
+}
+button {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+// ######### light theme ##########
+body {
+  background-color: $Very-Light-Grayish-Blue;
+  background-image: url(../images/bg-mobile-light.jpg);
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: 100% 10.8em;
+  background-attachment: scroll;
+  font-family: $font-stack;
+}
+
+.logo {
+  font-family: $font-stack;
+  font-size: 1rem;
+  font-weight: $font-weight-bold;
+  color: $Very-Light-Gray;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  line-height: $lh;
+}
+
+header {
+  display: flex;
+  max-width: 80vw;
+  margin: 2em auto;
+  align-items: center;
+}
+
+.icon-sun {
+  display: none;
+}
+.inactive {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+.toggle-icon-parent {
+  margin-left: auto;
+}
+.toggle-icon {
+  width: 1rem;
+}
+
+.circle {
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  border: 1px $Light-Grayish-Blue solid;
+  border-radius: 50%;
+  margin-left: 1em;
+}
+.input-container {
+  display: flex;
+  align-items: center;
+  width: 80vw;
+  margin: 1rem auto;
+  background-color: $Very-Light-Gray;
+  height: 3em;
+  border-radius: 5px;
+}
+.form {
+  width: calc(100% - (2em + 1rem));
+  height: 100%;
+  border-radius: 5px;
+}
+input:autofill {
+  border-radius: 5px;
+  width: 100%;
+  background-color: inherit !important;
+  margin-right: calc(2em + 1rem) !important;
+  color: $Very-Dark-Grayish-Blue-3;
+  font-family: $font-stack;
+  font-weight: $font-weight-medium;
+  font-size: $font-size;
+  line-height: $lh;
+}
+
+input {
+  margin-left: 1em;
+  height: 100%;
+  width: 100%;
+  border: none;
+  background-color: $Very-Light-Gray;
+  width: 100%;
+  padding: 0.3em 0.5em;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: none;
+}
+
+::placeholder {
+  color: $Very-Dark-Grayish-Blue-3;
+  font-family: $font-stack;
+  font-weight: $font-weight-medium;
+  font-size: $font-size;
+  line-height: $lh;
+}
+
+input[type="text"] {
+  color: $Very-Dark-Grayish-Blue-3;
+  font-family: $font-stack;
+  font-weight: $font-weight-medium;
+  line-height: $lh;
+  font-size: $font-size;
+}
+
+.items-container {
+  width: 80vw;
+  margin: 1rem auto;
+  border-radius: 5px;
+  background-color: $Very-Light-Gray;
+  color: $Very-Dark-Grayish-Blue-3;
+  font-family: $font-stack;
+  font-weight: $font-weight-medium;
+}
+.item {
+  display: flex;
+  align-items: center;
+  // background-color: $Very-Dark-Desaturated-Blue;
+  height: 3em;
+  // max-height: 5em;
+  // overflow: hidden;
+  border-bottom: 1px $Light-Grayish-Blue solid;
+}
+
+.list-text {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 1em;
+  padding-right: 0.7em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: $lh;
+  width: 100%;
+}
+.list-image-parent {
+  margin-left: auto;
+  margin-right: 1em;
+}
+.cross {
+  height: 1em;
+  width: 1em;
+}
+.update-parent {
+  height: 3.5em;
+  display: flex;
+  align-items: center;
+}
+
+.img-parent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $check-bg;
+  border-radius: 50%;
+  margin-left: 1em;
+  height: 1.5em;
+  width: 1.5em;
+  background: $check-bg;
+}
+
+.check {
+  width: 0.75em;
+  height: 0.75em;
+}
+.clr-btn {
+  margin-right: 1em;
+  margin-left: auto;
+  color: $Dark-Grayish-Blue;
+  font-family: $font-stack;
+  font-weight: $font-weight-medium;
+  font-size: $font-size;
+}
+main {
+  font-size: $font-size;
+  line-height: $lh;
+}
+.items-left {
+  color: $Dark-Grayish-Blue;
+  font-family: $font-stack;
+  font-weight: $font-weight-medium;
+  font-size: $font-size;
+  margin-right: auto;
+  margin-left: 1em;
+  line-height: $lh;
+}
+
+.btn-parent {
+  width: 80vw;
+  margin: 1rem auto;
+  background-color: $Very-Light-Gray;
+  border-radius: 5px;
+  height: 3em;
+}
+
+.screen-small {
+  display: block;
+}
+.screen-big {
+  display: none;
+}
+
+.btn-list {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.btn {
+  color: $Dark-Grayish-Blue;
+  font-family: $font-stack;
+  font-weight: $font-weight-bold;
+  font-size: $font-size;
+  text-transform: capitalize;
+  line-height: $lh;
+}
+.btn-active {
+  margin: 0 1em;
+}
+.btn-all {
+  margin-left: auto;
+}
+.btn-completed {
+  margin-right: auto;
+}
+.active {
+  color: $bright-blue;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $font-size;
+  color: $Dark-Grayish-Blue;
+  font-family: $font-stack;
+  font-size: $font-size;
+  margin: 0 auto;
+  margin-top: 3em;
+  margin-bottom: 2em;
+  line-height: $lh;
+  height: 5em;
+  width: 80vw;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: $Dark-Grayish-Blue;
+}
+// ########### media query (light-theme medium-screen) ###########
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  body {
+    background-image: url(../images/bg-desktop-light.jpg);
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: 100% 31vh;
+    background-attachment: scroll;
+  }
+  .logo {
+    line-height: $lh-large;
+    font-size: 2.5rem;
+    letter-spacing: 7px;
+  }
+  header,
+  .input-container,
+  .items-container,
+  footer {
+    width: 60vw;
+  }
+  .toggle-icon {
+    width: 1.5rem;
+  }
+  ::placeholder,
+  input[type="text"],
+  .list-text,
+  footer {
+    font-size: $font-size-large;
+    line-height: $lh-large;
+  }
+
+  .btn {
+    font-weight: $font-weight-medium;
+    font-size: $font-size;
+  }
+
+  .screen-small {
+    display: none;
+  }
+
+  .screen-big {
+    display: block;
+  }
+
+  .btn-parent {
+    height: auto;
+    width: auto;
+  }
+
+  .clr-btn {
+    text-transform: capitalize;
+    font-size: $font-size;
+  }
+  .items-left {
+    font-size: $font-size;
+  }
+
+  header {
+    margin-top: 5em;
+    margin-bottom: 3em;
+  }
+
+  // .remove {
+  //   visibility: hidden;
+  // }
+
+  .list-text {
+    cursor: pointer;
+  }
+
+  // .list-text:hover + button {
+  //   visibility: visible;
+  // }
+  .circle-parent:hover > .circle {
+    border: 1px solid transparent;
+    border-radius: 50%;
+    // background: $check-bg;
+    background: linear-gradient(to right, $Very-Light-Gray, $Very-Light-Gray),
+      $check-bg;
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+  }
+
+  .list-text:hover,
+  .btn:hover {
+    color: $Very-Dark-Grayish-Blue-3;
+  }
+
+  // .remove {
+  //   transition: all 5s;
+  //   transition-timing-function: ease;
+  // }
+
+  .clr-btn:hover {
+    color: $Very-Dark-Grayish-Blue-3;
+  }
+  .toggle-icon:hover {
+    transform: translateX(-10px);
+    transition: all 200ms;
+    transition-timing-function: ease-in-out;
+  }
+}
+
+// ########### media query (light-theme big-screen) ###########
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  body {
+    background-image: url(../images/bg-desktop-light.jpg);
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: 100% 31vh;
+    background-attachment: scroll;
+  }
+  .logo {
+    line-height: $lh-large;
+    font-size: 2.5rem;
+    letter-spacing: 7px;
+  }
+  header,
+  .input-container,
+  .items-container,
+  footer {
+    width: calc(100vw / 2.5);
+  }
+  .toggle-icon {
+    width: 1.5rem;
+  }
+  ::placeholder,
+  input[type="text"],
+  .list-text,
+  footer {
+    font-size: $font-size-large;
+    line-height: $lh-large;
+  }
+  .btn {
+    font-weight: $font-weight-medium;
+    font-size: $font-size;
+  }
+  .screen-small {
+    display: none;
+  }
+
+  .screen-big {
+    display: block;
+  }
+
+  .btn-parent {
+    height: auto;
+    width: auto;
+  }
+
+  .clr-btn {
+    text-transform: capitalize;
+    font-size: $font-size;
+  }
+  .items-left {
+    font-size: $font-size;
+  }
+
+  header {
+    margin-top: 5em;
+    margin-bottom: 3em;
+  }
+
+  .remove {
+    visibility: hidden;
+  }
+
+  .list-text {
+    cursor: pointer;
+  }
+
+  .list-text:hover + button {
+    visibility: visible;
+  }
+  .circle-parent:hover > .circle {
+    border: 1px solid transparent;
+    border-radius: 50%;
+    // background: $check-bg;
+    background: linear-gradient(to right, $Very-Light-Gray, $Very-Light-Gray),
+      $check-bg;
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+  }
+
+  .list-text:hover,
+  .btn:hover {
+    color: $Very-Dark-Grayish-Blue-3;
+  }
+
+  .remove {
+    transition: all 5s;
+    transition-timing-function: ease;
+  }
+
+  .clr-btn:hover {
+    color: $Very-Dark-Grayish-Blue-3;
+  }
+  .toggle-icon:hover {
+    transform: translateX(-10px);
+    transition: all 200ms;
+    transition-timing-function: ease-in-out;
+  }
+}

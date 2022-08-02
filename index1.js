@@ -10,6 +10,7 @@ const clrbtn = document.querySelector(".clr-btn")
 const left = document.querySelector(".items-left")
 const main = document.querySelector(".main")
 const buttons = document.querySelectorAll(".btn")
+const footer = document.querySelector(".footer-parent")
 // *********** variables *********
 let state = localStorage.getItem("darkmode")
 
@@ -158,6 +159,7 @@ const displayList = () => {
         item.classList.add("active")
       }
     })
+    enableInput()
     // div.classList.add("active")
   } else if (value === "completed") {
     let todo = document.querySelectorAll(".item")
@@ -180,6 +182,7 @@ const displayList = () => {
         item.classList.add("active")
       }
     })
+    disableInput()
   } else if (value === "active") {
     let todo = document.querySelectorAll(".item")
     todo.forEach((item) => {
@@ -201,6 +204,7 @@ const displayList = () => {
         item.classList.add("active")
       }
     })
+    disableInput()
   }
 }
 
@@ -262,6 +266,7 @@ const updateList = (e) => {
         }
       })
     }
+    disableInput()
   }
   if (div.innerText === "Completed") {
     setStatus("completed")
@@ -277,6 +282,7 @@ const updateList = (e) => {
         }
       })
     }
+    disableInput()
   }
   if (div.innerText === "All") {
     setStatus("all")
@@ -294,7 +300,36 @@ const updateList = (e) => {
         }
       })
     }
+    enableInput()
   }
+}
+const disableInput = () => {
+  input.disabled = true
+  footer.classList.add("inactive")
+  btns = document.querySelectorAll(".circle-parent")
+  btns2 = document.querySelectorAll(".img-parent")
+  btns.forEach((btn) => {
+    btn.disabled = true
+    btn.classList.add("initial")
+  })
+  btns2.forEach((btn) => {
+    btn.disabled = true
+    btn.classList.add("initial")
+  })
+}
+const enableInput = () => {
+  input.disabled = false
+  footer.classList.remove("inactive")
+  btns = document.querySelectorAll(".circle-parent")
+  btns2 = document.querySelectorAll(".img-parent")
+  btns.forEach((btn) => {
+    btn.disabled = false
+    btn.classList.remove("initial")
+  })
+  btns2.forEach((btn) => {
+    btn.disabled = false
+    btn.classList.remove("initial")
+  })
 }
 
 // drag and drop functionality

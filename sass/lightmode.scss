@@ -292,6 +292,9 @@ footer {
   text-decoration: line-through;
   color: $Dark-Grayish-Blue;
 }
+.initial {
+  cursor: initial;
+}
 // ########### media query (light-theme medium-screen) ###########
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   body {

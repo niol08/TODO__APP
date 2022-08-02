@@ -37,6 +37,7 @@ const createListItem = (id, value) => {
   checkBtn.addEventListener("click", checkFunc)
   remove.addEventListener("click", removeFunc)
   list.prepend(element)
+  updateListNumber()
 }
 // create list item checked
 const createListItemCheck = (id, value, drag) => {

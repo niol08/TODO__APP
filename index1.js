@@ -39,7 +39,7 @@ const createListItem = (id, value) => {
   list.prepend(element)
 }
 // create list item checked
-const createListItemCheck = (id, value) => {
+const createListItemCheck = (id, value, drag) => {
   const element = document.createElement("div")
   element.classList.add("item")
   const attr = document.createAttribute("data-id")
@@ -60,12 +60,15 @@ const createListItemCheck = (id, value) => {
   element
     .querySelector(".circle-parent")
     .nextElementSibling.nextElementSibling.classList.add("checked")
+  const attr2 = document.createAttribute("draggable")
+  attr2.value = drag
+  element.querySelector(".circle-parent").parentElement.setAttributeNode(attr2)
   list.prepend(element)
 }
 // edit state func
 const editState = (id) => {
   let items = JSON.parse(localStorage.getItem("listItems"))
-  items.map((item) => {
+  items = items.map((item) => {
     if (item.id === id) {
       item.state = "checked"
     }
@@ -129,7 +132,7 @@ const displayList = () => {
           if (item.state === "unchecked") {
             createListItem(item.id, item.value)
           } else if (item.state === "checked") {
-            createListItemCheck(item.id, item.value)
+            createListItemCheck(item.id, item.value, true)
           }
         })
       }
@@ -147,7 +150,7 @@ const displayList = () => {
         if (item.state === "unchecked") {
           createListItem(item.id, item.value)
         } else if (item.state === "checked") {
-          createListItemCheck(item.id, item.value)
+          createListItemCheck(item.id, item.value, true)
         }
       })
     }
@@ -170,7 +173,7 @@ const displayList = () => {
     if (items.length > 0) {
       items.forEach((item) => {
         if (item.state === "checked") {
-          createListItemCheck(item.id, item.value)
+          createListItemCheck(item.id, item.value, false)
         }
       })
     }
@@ -278,7 +281,7 @@ const updateList = (e) => {
     if (items.length > 0) {
       items.forEach((item) => {
         if (item.state === "checked") {
-          createListItemCheck(item.id, item.value)
+          createListItemCheck(item.id, item.value, false)
         }
       })
     }
@@ -296,7 +299,7 @@ const updateList = (e) => {
         if (item.state === "unchecked") {
           createListItem(item.id, item.value)
         } else if (item.state === "checked") {
-          createListItemCheck(item.id, item.value)
+          createListItemCheck(item.id, item.value, true)
         }
       })
     }
@@ -333,11 +336,39 @@ const enableInput = () => {
 }
 
 // drag and drop functionality
-const dragStart = () => {
-  console.log("start")
+let dragged
+const dragStart = (e) => {
+  dragged = e.target
+  dragged.classList.add("drag")
 }
-const dragEnd = () => {
-  console.log("end")
+const dragEnd = (e) => {
+  dragged.classList.remove("drag")
+}
+const dragOver = (e) => {
+  e.preventDefault()
+  footer.classList.add("enter")
+}
+const dragEnter = (e) => {
+  e.preventDefault()
+  footer.classList.add("enter")
+}
+const dragLeave = () => {
+  footer.classList.remove("enter")
+}
+const dragDrop = (e) => {
+  e.preventDefault()
+  footer.classList.remove("enter")
+  let id = dragged.dataset.id
+  let value = dragged.firstChild.nextElementSibling.nextElementSibling.innerText
+  let items = JSON.parse(localStorage.getItem("listItems"))
+  // remove from dom
+  list.removeChild(dragged)
+  // remove from local storage
+  removeFromLocalStorage(id)
+  // add to dom
+  createListItem(id, value)
+  // add to local storage
+  addToLocalStorage(id, value)
 }
 
 // *********** event listeners **********
@@ -358,11 +389,13 @@ buttons.forEach((item) => {
   item.addEventListener("click", updateList)
 })
 window.addEventListener("DOMContentLoaded", updateListNumber)
-const divs = document.querySelectorAll(".item")
-divs.forEach((item) => {
-  item.addEventListener("drangstart", dragStart)
-  item.addEventListener("dragend", dragEnd)
-})
+document.addEventListener("dragstart", dragStart)
+document.addEventListener("dragend", dragEnd)
+footer.addEventListener("dragover", dragOver)
+footer.addEventListener("dragenter", dragEnter)
+footer.addEventListener("dragleave", dragLeave)
+footer.addEventListener("drop", dragDrop)
+
 // ********** local storage ********
 const setStatus = (value) => {
   localStorage.setItem("status", JSON.stringify(value))

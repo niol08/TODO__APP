@@ -294,6 +294,11 @@ footer {
 .initial {
   cursor: initial;
 }
+.enter {
+  background-color: $Light-Grayish-Blue-hover;
+  border-radius: 10px;
+}
+
 // ########### media query (dark-theme medium-screen) ###########
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   body {
@@ -361,6 +366,10 @@ footer {
 
   .list-text {
     cursor: pointer;
+  }
+  .drag {
+    cursor: grabbing;
+    opacity: 0.3;
   }
 
   // .list-text:hover + button {
@@ -469,7 +478,10 @@ footer {
   .list-text {
     cursor: pointer;
   }
-
+  .drag {
+    cursor: grabbing;
+    opacity: 0.3;
+  }
   .list-text:hover + button {
     visibility: visible;
   }

@@ -369,6 +369,8 @@ const dragDrop = (e) => {
   createListItem(id, value)
   // add to local storage
   addToLocalStorage(id, value)
+  // update list number
+  updateListNumber()
 }
 
 // *********** event listeners **********
